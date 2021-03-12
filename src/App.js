@@ -16,8 +16,8 @@ function App() {
           <Route path='/list' component={ List }/>
         </Switch>
       </Router> */}
-      <MovieForm />
-      <ContentTable />
+      <MovieForm className='movieForm'/>
+      <ContentTable className='contentTable'/>
 
     </div>
   );
