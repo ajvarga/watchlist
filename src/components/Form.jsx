@@ -22,7 +22,8 @@ class Form extends Component {
      };
 
      submissionHandler = (event) =>{
-         event.preventDefault();
+        //  yeet this for now, so the page will auto refresh when form submits, thus updating the table
+        //  event.preventDefault();
 
         // console.log(this.state)
         // post the state to the firestore and clear out the entries
@@ -33,14 +34,9 @@ class Form extends Component {
         .catch((error) => {
             console.error("Error adding document: ", error);
         });
-        
+
         // clear fields after submission
-        this.setState({
-            movieTitle : '',
-            watchYear : '',
-            status : '',
-            rating : ''
-        });
+        event.target.reset();
      }
     render() { 
         return ( 
@@ -58,11 +54,11 @@ class Form extends Component {
                         <label>
                             Status:
                             <select name="status" onChange={this.myChangeHandler}>
-                                <option value="watching">Watching</option>
-                                <option value="onHold">On Hold</option>
-                                <option value="dropped">Dropped</option>
-                                <option value="finished">Finished</option>
-                                <option value="plantToWatch">Plan to Watch</option>
+                                <option value="Watching">Watching</option>
+                                <option value="On Hold">On Hold</option>
+                                <option value="Fropped">Dropped</option>
+                                <option value="Finished">Finished</option>
+                                <option value="Plan To Watch">Plan to Watch</option>
                             </select>
                         </label>
                         <label>

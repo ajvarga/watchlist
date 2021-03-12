@@ -17,10 +17,11 @@ class Table extends Component {
                  const data = doc.data()
                  movies.push(data)
              })
-             console.log(movies)
              this.setState({ movies: movies });
 
          }).catch( error => console.log(error))
+
+         console.log(this.state);
      }
 
     render() { 
