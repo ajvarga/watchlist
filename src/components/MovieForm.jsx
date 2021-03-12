@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import * as ReactBootStrap from 'react-bootstrap';
+// import * as ReactBootStrap from 'react-bootstrap';
+import { Button, Dropdown } from 'react-bootstrap';
 import firebase from '../firebase';
 
 const ref = firebase.firestore().collection('movies')
 
-class Form extends Component {
+class MovieForm extends Component {
     //store data in state
     
     state = { 
@@ -71,7 +72,7 @@ class Form extends Component {
                                 <option value="5">5</option>
                             </select>
                         </label>
-                        <button type='submit' onSubmit={ this.submissionHandler }>submit</button>
+                        <Button variant="info"type='submit' onSubmit={ this.submissionHandler }>submit</Button>
                     </form>
                 </section>
             </div>
@@ -79,4 +80,4 @@ class Form extends Component {
     }
 }
  
-export default Form;
+export default MovieForm;

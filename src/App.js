@@ -1,8 +1,10 @@
 import './App.css';
-import * as ReactBootStrap from 'react-bootstrap';
+// import * as ReactBootStrap from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Form from './components/Form';
-import Table from './components/Table';
+import MovieForm from './components/MovieForm';
+import ContentTable from './components/ContentTable';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -14,8 +16,8 @@ function App() {
           <Route path='/list' component={ List }/>
         </Switch>
       </Router> */}
-      <Form />
-      <Table />
+      <MovieForm />
+      <ContentTable />
 
     </div>
   );

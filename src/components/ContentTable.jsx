@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import firebase from '../firebase';
-import { db } from '../firebase'
+import { db } from '../firebase';
+import { Table } from 'react-bootstrap';
 const ref = firebase.firestore().collection('movies')
 
-class Table extends Component {
+class ContentTable extends Component {
     state = { 
         movies: null
      };
@@ -56,4 +57,4 @@ class Table extends Component {
     }
 }
  
-export default Table;
+export default ContentTable;
