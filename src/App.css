@@ -1,8 +1,6 @@
-html{
+.App{
     font-size: 100%;
     box-sizing: border-box;
+    /* background-color: dimgray; */
 }
 
-.movieForm{
-    margin-left: 3rem;
-}

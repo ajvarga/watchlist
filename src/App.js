@@ -16,7 +16,7 @@ function App() {
           <Route path='/list' component={ List }/>
         </Switch>
       </Router> */}
-      <MovieForm className='movieForm'/>
+      {/* <MovieForm className='movieForm'/> */}
       <ContentTable className='contentTable'/>
 
     </div>
