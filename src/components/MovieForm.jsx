@@ -44,7 +44,7 @@ class MovieForm extends Component {
         return ( 
             <Container className='d-flex justify-content-center'>
                 <Row>
-                    <Card className='text-center' >
+                    <Card className='text-center' border='primary'>
                         <Card.Header>What Have You Watched?</Card.Header>
                         <Card.Body>
 

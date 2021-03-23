@@ -33,9 +33,6 @@ const EditForm = (props) => {
     
 
     function submissionHandler(event){
-        //  yeet this for now, so the page will auto refresh when form submits, thus updating the table
-         event.preventDefault();
-
         // null checks, if the field does not change, fill it with the default
         if(value.watchYear === ''){value.watchYear = movie.watchYear}
         if(value.status === ''){value.status = movie.status}
@@ -58,7 +55,7 @@ const EditForm = (props) => {
         <>
         <Container className='d-flex justify-content-center'>
                 <Row>
-                    <Card className='text-center' >
+                    <Card className='text-center' border='warning' >
                         <Card.Header>Edit { movie.movieTitle } entry?</Card.Header>
                         <Card.Body>
                         <Form >
