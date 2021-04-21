@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MovieForm from './components/MovieForm';
 import ContentTable from './components/ContentTable';
+import Login from './components/Login';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,7 +18,13 @@ function App() {
         </Switch>
       </Router> */}
       {/* <MovieForm className='movieForm'/> */}
-      <ContentTable className='contentTable'/>
+      <Router>
+        <Switch>
+          <Route path='/' component={ Login }/>
+          <Route path='/home' component={ ContentTable }/>
+        {/* <ContentTable className='contentTable'/> */}
+        </Switch>
+      </Router>
 
     </div>
   );

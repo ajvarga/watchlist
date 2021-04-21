@@ -55,7 +55,7 @@ const EditForm = (props) => {
         <>
         <Container className='d-flex justify-content-center'>
                 <Row>
-                    <Card className='text-center' border='warning' >
+                    <Card className='text-center' border='warning' id='movieCard' >
                         <Card.Header>Edit { movie.movieTitle } entry?</Card.Header>
                         <Card.Body>
                         <Form >

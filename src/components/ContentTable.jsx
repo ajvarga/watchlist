@@ -10,7 +10,9 @@ const ref = firebase.firestore().collection('movies')
 class ContentTable extends Component {
     state = { 
         movies: null,
-        hide: true
+        hideAdd: true,
+        hideEdit: true,
+        docId: ''
      };
 
      componentDidMount  = async() => {
@@ -33,11 +35,18 @@ class ContentTable extends Component {
 
         //  console.log(this.state);
      }
+     renderEditForm = (e) =>{
+        //  I want to set the state to the docID, the EditForm component can grab it through props, and then we can show the editForm
+        this.setState({
+            hideEdit: !this.state.hideEdit,
+            docId: e
+        })
+     }
 
     showForm = () =>{
         console.log('abra kadabra')
         this.setState({
-            hide: !this.state.hide
+            hideAdd: !this.state.hideAdd
         })
         console.log(this.state)
     }
@@ -46,12 +55,16 @@ class ContentTable extends Component {
         
         return ( 
             <>
+
             <div>
-               {!this.state.hide && <MovieForm className='movieForm'/>}
+               {!this.state.hideAdd && <MovieForm className='movieForm'/>}
+               {!this.state.hideEdit && <EditForm docId={ this.state.docId } />}
             </div>
             
             <Container >
-                <Button variant='primary' onClick={this.showForm}>+</Button>
+                {this.state.hideAdd 
+                    ? <Button variant='primary' onClick={this.showForm}>+</Button>
+                    : <Button variant='danger' onClick={this.showForm}>X</Button>}
                 <Table striped bordered hover size='md'>
                     {/* Table Heading */}
                     <thead>
@@ -69,17 +82,19 @@ class ContentTable extends Component {
                             this.state.movies &&
                             this.state.movies.map( movie => {
                                 return (
-                                    <tr>
-                                        <td>{ movie.movieTitle } </td>
-                                        <td>{ movie.watchYear }</td>
-                                        <td>{ movie.status }</td>
-                                        <td>{ movie.rating} </td>
-                                        <Button value={ movie.key } 
-                                            // onClick={ () => this.updateRow( movie.key ) } 
-                                            variant='warning'>
-                                            <EditForm docId={ movie.key } />
-                                        </Button>
-                                    </tr>
+                                        <tr>
+                                            <td>{ movie.movieTitle } </td>
+                                            <td>{ movie.watchYear }</td>
+                                            <td>{ movie.status }</td>
+                                            <td>{ movie.rating} </td>
+                                            <Button value={ movie.key } 
+                                                onClick={ () => this.renderEditForm( movie.key ) } 
+                                                variant='warning'>
+                                                    Edit
+                                            </Button>
+                                            {/* <EditForm docId={ movie.key } /> */}
+                                        </tr>
+                                        
                                 )
                             })
                         }
