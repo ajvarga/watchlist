@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Link} from 'react-router-dom';
+import React from 'react';
+import firebase, { auth } from '../firebase';
 
 function Login() {
+    const signInWithGoogle = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider);
+    }
     return(
         <div>
-            <h1>Joe Mama</h1>
-            <button>
-                <Link to='/content'>Go</Link>
-            </button>
+            <button onClick={ signInWithGoogle }>Sign in with Google</button>
         </div>
     );
 }
