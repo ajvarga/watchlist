@@ -1,23 +1,24 @@
 import './App.css';
 // import * as ReactBootStrap from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import MovieForm from './components/MovieForm';
 import ContentTable from './components/ContentTable';
+import Login from './components/Login'
+import firebase, { auth } from './firebase'
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Logout from './components/Logout';
 
 function App() {
+  const [user] = useAuthState(auth);
   return (
     <div className="App">
-      {/* <Router>
-        <Switch>
-          <Route path='/' component={ Form }/>
-          <Route path='/form' component={ Form }/>
-          <Route path='/list' component={ List }/>
-        </Switch>
-      </Router> */}
-      {/* <MovieForm className='movieForm'/> */}
-      <ContentTable className='contentTable'/>
+      <header>
+        <h1>Watch List</h1>
+        <Logout/>
+      </header>
+      <section>
+        {user ? <ContentTable/> : <Login/>}
+      </section>
 
     </div>
   );
